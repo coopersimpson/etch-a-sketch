@@ -10,7 +10,7 @@ function makeRows(rows, cols) {
     container.style.setProperty('--grid-cols', cols);
     for (c = 0; c < (rows * cols); c++) {
       let cell = document.createElement("div");
-      cell.innerText = (c + 1);
+      // cell.innerText = (c + 1);
       container.appendChild(cell).className = "grid-item";
     };
   };
@@ -38,7 +38,7 @@ const changeResolution = document.querySelector("button")
 
 changeResolution.addEventListener('click', () => {
   // Input res
-  res = prompt('Enter Resolution')
+  res = prompt('Enter desired resolution of grid. (a number between 2 and 100)')
 
   // Restrict bounds
   if (res >= 2 && res <= 100) {
@@ -52,6 +52,6 @@ changeResolution.addEventListener('click', () => {
     initialiseDraw()
   }
   else {
-    alert('Invalid input')
+    alert('Please enter a number between 2 and 100 inclusive.')
   }
 })

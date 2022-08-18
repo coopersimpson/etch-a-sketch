@@ -6,7 +6,7 @@
 }
 
 .container {
-    outline: 1px dotted red;
+    border: 1px solid black;
     margin: 0 auto;
     margin-top: 100px;
     width: 1000px;
@@ -19,9 +19,4 @@
 
 .container div {
     border: 1px solid black;
-    text-align: center;
 }
-/* 
-.container div:hover {
-    background-color: blue;
-} */
