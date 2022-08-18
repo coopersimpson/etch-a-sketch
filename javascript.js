@@ -1,10 +1,8 @@
-/*
-Create grid
-*/
-
 const container = document.querySelector(".container")
 
-//https://stackoverflow.com/a/57550587/
+/*
+Create grid function -> /https://stackoverflow.com/a/57550587/
+*/
 
 function makeRows(rows, cols) {
     // Add inline style to container
@@ -16,23 +14,44 @@ function makeRows(rows, cols) {
       container.appendChild(cell).className = "grid-item";
     };
   };
-  
-  makeRows(16, 16);
-
 
 /*
 Drawing function
 */
-const cells  = document.querySelectorAll(".grid-item")
 
-for (let i = 0; i < cells.length; i++) {
-  cells[i].addEventListener('mouseover', () => {
-    cells[i].style.backgroundColor = 'red'
-  });
+function initialiseDraw() {
+  const cells  = document.querySelectorAll(".grid-item")
+
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener('mouseover', () => {
+      cells[i].style.backgroundColor = 'red'
+    });
+  }
 }
+  
+// Default rows
+makeRows(16, 16);
+// Initialise draw functionality
+initialiseDraw()
 
-// Alt syntax:
-    // cells.forEach(cell => {
-    //   console.log(cell)
-    //   cell.addEventListener('mouseover', () => cell.style.backgroundColor = 'red')
-    // })
+const changeResolution = document.querySelector("button")
+
+changeResolution.addEventListener('click', () => {
+  // Input res
+  res = prompt('Enter Resolution')
+
+  // Restrict bounds
+  if (res >= 2 && res <= 100) {
+    // Delete current grid
+    while (container.firstChild) {
+      container.removeChild(container.firstChild)
+    }
+    // Create grid
+    makeRows(res, res)
+    // Reset draw functionality
+    initialiseDraw()
+  }
+  else {
+    alert('Invalid input')
+  }
+})
