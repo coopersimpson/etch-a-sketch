@@ -3,7 +3,6 @@ const container = document.querySelector(".container")
 /*
 Create grid function -> /https://stackoverflow.com/a/57550587/
 */
-
 function makeRows(rows, cols) {
     // Add inline style to container
     container.style.setProperty('--grid-rows', rows);
@@ -18,7 +17,6 @@ function makeRows(rows, cols) {
 /*
 Drawing function
 */
-
 function initialiseDraw() {
   const cells  = document.querySelectorAll(".grid-item")
 
@@ -30,12 +28,16 @@ function initialiseDraw() {
 }
   
 // Default rows
+rowNum = 16
 makeRows(16, 16);
 // Initialise draw functionality
 initialiseDraw()
 
-const changeResolution = document.querySelector("button")
+const changeResolution = document.querySelector("#resbutton")
 
+/*
+Change resolution button
+*/
 changeResolution.addEventListener('click', () => {
   // Input res
   res = prompt('Enter desired resolution of grid. (a number between 2 and 100)')
@@ -47,6 +49,7 @@ changeResolution.addEventListener('click', () => {
       container.removeChild(container.firstChild)
     }
     // Create grid
+    rowNum = res
     makeRows(res, res)
     // Reset draw functionality
     initialiseDraw()
@@ -54,4 +57,18 @@ changeResolution.addEventListener('click', () => {
   else {
     alert('Please enter a number between 2 and 100 inclusive.')
   }
+})
+
+/*
+Reset button
+*/
+const resetButton = document.querySelector("#resetbutton")
+
+resetButton.addEventListener('click', () => {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild)
+  }
+  makeRows(rowNum, rowNum)
+  console.log(rowNum)
+  initialiseDraw()
 })
