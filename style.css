@@ -65,3 +65,11 @@ h1 {
 #colorpicker:hover {
     border: 5px solid black;
 }
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 32px;
+}
