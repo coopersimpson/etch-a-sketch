@@ -1,5 +1,11 @@
 const container = document.querySelector(".container")
 
+function randomColor() {
+  return '#' + (Math.floor(Math.random()*16777215).toString(16))
+}
+
+console.log(randomColor())
+
 /*
 Create grid function -> /https://stackoverflow.com/a/57550587/
 */
@@ -26,6 +32,20 @@ function initialiseDraw() {
     });
   }
 }
+
+/*
+Rainbow draw
+*/
+function rainbowDraw() {
+  const cells  = document.querySelectorAll(".grid-item")
+
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener('mouseover', () => {
+      cells[i].style.backgroundColor = randomColor()
+    });
+  }
+}
+
   
 // Default rows
 rowNum = 16
@@ -72,3 +92,13 @@ resetButton.addEventListener('click', () => {
   console.log(rowNum)
   initialiseDraw()
 })
+
+/*
+Rainbow button
+*/
+const rainbowButton = document.querySelector("#rainbow")
+
+rainbowButton.addEventListener('click', () => {
+  rainbowDraw()
+})
+
