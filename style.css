@@ -33,17 +33,35 @@ h1 {
 /* Interface */
 .interface-container {
     display: flex;
-    justify-content: space-around;
     width: 1000px;
-    margin: 50px auto;
+    margin: 40px auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 
 }
 
 .interface-container button {
     background-color: white;
+    width: 300px;
     font-size: 30px;
     padding: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.interface-container button:hover {
+    background-color: black;
+    color: white;
+}
+
+#colorpicker {
+    width: 100px;
+    height: 100px;
+    border: 5px solid white;
+}
+
+#colorpicker:hover {
+    border: 5px solid black;
 }
