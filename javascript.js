@@ -4,8 +4,6 @@ function randomColor() {
   return '#' + (Math.floor(Math.random()*16777215).toString(16))
 }
 
-console.log(randomColor())
-
 /*
 Create grid function -> /https://stackoverflow.com/a/57550587/
 */
@@ -45,6 +43,20 @@ function rainbowDraw() {
     });
   }
 }
+
+/*
+Eraser
+*/
+function eraserDraw() {
+  const cells  = document.querySelectorAll(".grid-item")
+
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener('mouseover', () => {
+      cells[i].style.backgroundColor = 'white'
+    });
+  }
+}
+
 
   
 // Default rows
@@ -102,3 +114,11 @@ rainbowButton.addEventListener('click', () => {
   rainbowDraw()
 })
 
+/*
+Eraser button
+*/
+const eraserButton = document.querySelector("#eraser")
+
+eraserButton.addEventListener('click', () => {
+  eraserDraw()
+})
