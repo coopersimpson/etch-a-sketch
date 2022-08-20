@@ -26,7 +26,7 @@ function initialiseDraw() {
 
   for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('mouseover', () => {
-      cells[i].style.backgroundColor = 'red'
+      cells[i].style.backgroundColor = 'black'
     });
   }
 }
@@ -57,19 +57,30 @@ function eraserDraw() {
   }
 }
 
+/*
+Pick color
+*/
+function pickColorDraw(color) {
+  const cells  = document.querySelectorAll(".grid-item")
 
-  
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener('mouseover', () => {
+      cells[i].style.backgroundColor = color
+    });
+  }
+}
+
 // Default rows
 rowNum = 16
 makeRows(16, 16);
 // Initialise draw functionality
 initialiseDraw()
 
-const changeResolution = document.querySelector("#resbutton")
-
 /*
 Change resolution button
 */
+const changeResolution = document.querySelector("#resbutton")
+
 changeResolution.addEventListener('click', () => {
   // Input res
   res = prompt('Enter desired resolution of grid. (a number between 2 and 100)')
@@ -85,6 +96,7 @@ changeResolution.addEventListener('click', () => {
     makeRows(res, res)
     // Reset draw functionality
     initialiseDraw()
+    colorPick.value = '#000000'
   }
   else {
     alert('Please enter a number between 2 and 100 inclusive.')
@@ -101,8 +113,8 @@ resetButton.addEventListener('click', () => {
     container.removeChild(container.firstChild)
   }
   makeRows(rowNum, rowNum)
-  console.log(rowNum)
   initialiseDraw()
+  colorPick.value = '#000000'
 })
 
 /*
@@ -121,4 +133,15 @@ const eraserButton = document.querySelector("#eraser")
 
 eraserButton.addEventListener('click', () => {
   eraserDraw()
+  colorPick.value = '#FFFFFF'
 })
+
+/*
+Color picker
+*/
+const colorPicker = document.querySelector("#colorpicker")
+let colorPick = document.getElementById("colorpicker")
+
+addEventListener('input', (event) => {
+  pickColorDraw(colorPick.value)
+});
